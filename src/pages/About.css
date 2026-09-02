@@ -1,0 +1,132 @@
+.about-page {
+  width: 100vw;
+  height: calc(100vh - 70px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Left Column Styling */
+.about-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 5vw;
+  box-sizing: border-box;
+}
+
+.about-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+}
+
+.about-title {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-top: 0.5rem;
+  color: #000000;
+}
+
+.about-body {
+  max-width: 460px;
+}
+
+.about-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 2.5rem;
+  border-left: 2px solid #000000;
+  padding-left: 1rem;
+}
+
+.about-stats {
+  display: flex;
+  gap: 3rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #000000;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #666666;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+/* Right Column & Floating Morph Stage */
+.about-right-col {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.morph-stage {
+  position: relative;
+  width: 80%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Continuous Floating Effect */
+.floating-node {
+  animation: floatEffect 6s ease-in-out infinite;
+}
+
+@keyframes floatEffect {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Shape-Shifting Image Transitions */
+.morph-img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.85) rotate(-6deg);
+  filter: blur(8px);
+  transition: 
+    opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.morph-img.active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  filter: blur(0px);
+}

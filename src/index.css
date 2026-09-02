@@ -1,0 +1,56 @@
+/* src/index.css */
+
+:root {
+  --bg-primary: #e5e5e5; /* Canvas matched to editorial light grey */
+  --text-primary: #000000;
+  --text-muted: #666666;
+  --accent: #000000;
+  --border-light: #d1d1d1;
+  --font-heading: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, 
+body {
+  width: 100%;
+  max-width: 100vw;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevents unwanted horizontal scrolling during animations */
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Interactive Image Scaling & Hover Canvas */
+.interactive-img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  will-change: transform;
+}
+
+.interactive-img:hover {
+  transform: scale(1.04) translateY(-6px);
+}

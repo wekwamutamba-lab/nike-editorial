@@ -1,0 +1,161 @@
+/* src/pages/Collection.css */
+
+.collection-page {
+  width: 100vw;
+  min-height: calc(100vh - 70px);
+  padding: 3rem 5vw;
+  background-color: #e5e5e5; /* Canvas matched to editorial light grey */
+  box-sizing: border-box;
+}
+
+.collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #d1d1d1;
+  padding-bottom: 1.5rem;
+}
+
+.collection-header h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid #000000;
+  color: #000000;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn.active, 
+.filter-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Responsive Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image Swap Container */
+.card-image-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: #f0f0f0; /* Muted card frame background */
+  overflow: hidden;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Primary Image Visible by Default */
+.primary-view {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Secondary Angle Hidden by Default */
+.secondary-view {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Hover Swap */
+.card-image-box:hover .primary-view {
+  opacity: 0;
+}
+
+.card-image-box:hover .secondary-view {
+  opacity: 1;
+}
+
+/* Product Meta Typography */
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-meta h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #000000;
+  margin: 0;
+}
+
+.card-cat {
+  font-size: 0.75rem;
+  color: #555555;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.card-price {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #000000;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 768px) {
+  .collection-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .collection-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .filter-bar {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; /* Stacks shoes cleanly in a single column on mobile */
+    gap: 2rem;
+  }
+}

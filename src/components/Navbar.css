@@ -1,0 +1,56 @@
+/* src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5vw;
+  border-bottom: 1px solid #d1d1d1;
+  background-color: #e5e5e5; /* Updated from #ffffff to match page background */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-logo,
+.nav-brand a {
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.2rem;
+    font-size: 0.75rem;
+  }
+}

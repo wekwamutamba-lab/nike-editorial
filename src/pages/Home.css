@@ -1,0 +1,159 @@
+/* src/pages/Home.css */
+
+.home-container {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+  background-color: #e5e5e5; /* Canvas matched to muted light grey */
+  box-sizing: border-box;
+}
+
+.hero-slide-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Base Layer Setup */
+.base-layer {
+  background-color: #e5e5e5;
+  z-index: 1;
+}
+
+/* Dynamic Wipe Overlay */
+.overlay-layer {
+  background-color: #000000;
+  z-index: 2;
+  will-change: clip-path;
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.overlay-layer.visible {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.overlay-layer.hidden {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
+/* Centered Unmodified Background Photo */
+.hero-image-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Content Placement */
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 5vw;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-text-overlay,
+.hero-footer {
+  pointer-events: auto;
+}
+
+/* Base Light Theme Typography Rules */
+.theme-black .hero-subtitle,
+.theme-black .part-1,
+.theme-black .cta-link {
+  color: #000000;
+}
+
+.theme-black .part-2 {
+  color: #ffffff;
+}
+
+.theme-black .cta-link {
+  border-bottom: 1px solid #000000;
+}
+
+/* Base Dark Theme Typography Rules */
+.theme-white .hero-subtitle,
+.theme-white .part-1,
+.theme-white .cta-link {
+  color: #ffffff;
+}
+
+.theme-white .part-2 {
+  color: #000000;
+}
+
+.theme-white .cta-link {
+  border-bottom: 1px solid #ffffff;
+}
+
+/* General Typography Formatting */
+.hero-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  display: block;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 7.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-top: 0.5rem;
+}
+
+.cta-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding-bottom: 0.2rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.cta-link:hover {
+  opacity: 0.7;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .home-container {
+    height: calc(100vh - 60px);
+  }
+
+  .hero-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 10vw, 4rem); /* Prevents headline text overflow on small screens */
+  }
+
+  .hero-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+  }
+
+  .cta-link {
+    font-size: 0.75rem;
+  }
+}
