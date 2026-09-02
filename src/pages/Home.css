@@ -4,6 +4,10 @@
   position: relative;
   width: 100%;
   max-width: 100vw;
+  /* dvh accounts for the mobile browser chrome (URL bar) disappearing on scroll;
+     falls back to svh then vh for browsers without dvh support */
+  height: calc(100dvh - 70px);
+  height: calc(100svh - 70px);
   height: calc(100vh - 70px);
   overflow: hidden;
   background-color: #ffffff;
@@ -47,9 +51,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
-  height: 80vh;
-  max-width: 1200px; /* Big impact on large monitors */
-  max-height: 700px;
+  height: 82vh;
+  max-width: 1400px;  /* Allows full visual impact on large monitors */
+  max-height: 85vh;   /* Grows proportionally with tall screens */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -106,7 +110,7 @@
 
 /* Typography & Responsive Fluidity */
 .hero-subtitle {
-  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
   letter-spacing: 0.25em;
   font-weight: 700;
   display: block;
@@ -116,7 +120,7 @@
   display: flex;
   flex-wrap: wrap; /* Allows "JUST" and "DO IT." to stack cleanly on narrow mobile displays */
   gap: 0.2em;
-  font-size: clamp(2rem, 7.5vw, 7.5rem); /* Dynamically shrinks to fit mobile, scales up to 120px on desktop */
+  font-size: clamp(2.2rem, 7.5vw, 8rem); /* Dynamically shrinks to fit mobile, scales up on desktop */
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.04em;
@@ -130,7 +134,7 @@
 }
 
 .cta-link {
-  font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+  font-size: clamp(0.72rem, 1.1vw, 0.85rem);
   font-weight: 700;
   letter-spacing: 0.15em;
   padding-bottom: 0.2rem;
@@ -138,14 +142,34 @@
   display: inline-block;
 }
 
-/* Mobile Safety Adjustment */
-@media (max-width: 600px) {
+/* ─── Tablet (481px – 768px) ───────────────────────────────────────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
   .hero-content {
-    padding: 2rem 1.25rem;
+    padding: 2.5rem 4vw;
   }
 
   .hero-image-center {
-    width: 85vw;
-    height: 50vh;
+    width: 88vw;
+    height: 68vh;
+  }
+}
+
+/* ─── Mobile (≤ 480px) ──────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Navbar stacks on mobile and becomes ~100px tall; compensate accordingly */
+  .home-container {
+    height: calc(100dvh - 100px);
+    height: calc(100svh - 100px);
+    height: calc(100vh - 100px);
+  }
+
+  .hero-content {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .hero-image-center {
+    width: 92vw;
+    height: 52vh;
+    max-height: 55vh;
   }
 }
