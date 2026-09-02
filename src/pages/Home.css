@@ -156,41 +156,62 @@
 
 /* ─── Mobile (≤ 480px) ──────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  /* Navbar stacks on mobile and becomes ~100px tall; compensate accordingly */
+
+  /* Navbar stacks on mobile and becomes ~100px tall */
   .home-container {
     height: calc(100dvh - 100px);
     height: calc(100svh - 100px);
     height: calc(100vh - 100px);
   }
 
-  /* Image pinned to the TOP of the hero — no centering, just horizontal alignment */
+  /* ── Image: top 56% of the hero, horizontally centered ─────────────────────
+     'contain' keeps the full Nike logo visible; the layer bg colour fills the
+     rest, so there is no random white/black bleed behind the text.           */
   .hero-image-center {
     top: 0;
-    transform: translateX(-50%);   /* Only center horizontally, not vertically */
-    width: 100vw;
-    height: 52vh;
-    max-height: 52vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 56%;
     max-width: 100%;
+    max-height: none;        /* Override the desktop vh-based cap */
+    background-size: contain;
   }
 
-  /* Text flows from just below the image — padding-top pushes it down to meet the image bottom.
-     No flex-end trickery; content is just offset from the top to eliminate the white gap. */
+  /* ── Text zone: explicitly the bottom 44% of the hero ──────────────────────
+     Using top/left/right/bottom directly (not inset shorthand) so we can
+     override the base inset: 0 without relying on padding tricks.           */
   .hero-content {
-    justify-content: flex-start;
-    padding: 54vh 1.25rem 2rem;   /* 54vh ≈ just past the image bottom (52vh) */
+    top: 56%;                /* Start where the image ends */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 1.5rem;
     gap: 0.6rem;
   }
 
-  /* Reset order (not needed with flex-start layout) */
-  .hero-text-overlay { order: unset; }
-  .hero-footer        { order: unset; }
-
-  /* Stack "JUST D" and "O IT." as two clean rows — eliminates the cutoff entirely */
+  /* ── Title: column direction guarantees both spans render on separate lines
+     with no wrapping edge-cases or overflow clipping.                        */
   .hero-title {
+    display: flex;
     flex-direction: column;
-    font-size: clamp(1.9rem, 10.5vw, 2.8rem);
+    flex-wrap: nowrap;
+    font-size: clamp(2.2rem, 12vw, 3.5rem);
     line-height: 1;
     margin-top: 0.2rem;
     gap: 0;
+  }
+
+  /* ── Subtitle + CTA: slightly larger minimum for readability on small screens */
+  .hero-subtitle {
+    font-size: clamp(0.65rem, 3vw, 0.8rem);
+  }
+
+  .cta-link {
+    font-size: clamp(0.65rem, 3vw, 0.8rem);
+    margin-top: 0.5rem;
   }
 }
