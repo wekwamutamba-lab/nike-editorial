@@ -163,13 +163,35 @@
     height: calc(100vh - 100px);
   }
 
+  /* Shift all text to the bottom so it's always fully visible over the image,
+     mirroring the editorial impact of the desktop layout */
   .hero-content {
-    padding: 1.75rem 1.25rem;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 0 1.25rem 2rem;
   }
 
+  /* Title + subtitle group sits just above the CTA */
+  .hero-text-overlay {
+    order: 1;
+  }
+
+  .hero-footer {
+    order: 2;
+  }
+
+  /* Shrink the title slightly so it fits on one or two clean lines */
+  .hero-title {
+    font-size: clamp(2.2rem, 13vw, 3.5rem);
+    margin-top: 0.25rem;
+  }
+
+  /* Image takes the full canvas behind the text */
   .hero-image-center {
-    width: 92vw;
-    height: 52vh;
-    max-height: 55vh;
+    top: 30%;          /* Nudge image up so it peeks above the text block */
+    width: 100vw;
+    height: 65vh;
+    max-height: 70vh;
+    max-width: 100%;
   }
 }
