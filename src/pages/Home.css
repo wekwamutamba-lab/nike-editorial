@@ -163,35 +163,34 @@
     height: calc(100vh - 100px);
   }
 
-  /* Shift all text to the bottom so it's always fully visible over the image,
-     mirroring the editorial impact of the desktop layout */
-  .hero-content {
-    justify-content: flex-end;
-    gap: 1rem;
-    padding: 0 1.25rem 2rem;
-  }
-
-  /* Title + subtitle group sits just above the CTA */
-  .hero-text-overlay {
-    order: 1;
-  }
-
-  .hero-footer {
-    order: 2;
-  }
-
-  /* Shrink the title slightly so it fits on one or two clean lines */
-  .hero-title {
-    font-size: clamp(2.2rem, 13vw, 3.5rem);
-    margin-top: 0.25rem;
-  }
-
-  /* Image takes the full canvas behind the text */
+  /* Image pinned to the TOP of the hero — no centering, just horizontal alignment */
   .hero-image-center {
-    top: 30%;          /* Nudge image up so it peeks above the text block */
+    top: 0;
+    transform: translateX(-50%);   /* Only center horizontally, not vertically */
     width: 100vw;
-    height: 65vh;
-    max-height: 70vh;
+    height: 52vh;
+    max-height: 52vh;
     max-width: 100%;
+  }
+
+  /* Text flows from just below the image — padding-top pushes it down to meet the image bottom.
+     No flex-end trickery; content is just offset from the top to eliminate the white gap. */
+  .hero-content {
+    justify-content: flex-start;
+    padding: 54vh 1.25rem 2rem;   /* 54vh ≈ just past the image bottom (52vh) */
+    gap: 0.6rem;
+  }
+
+  /* Reset order (not needed with flex-start layout) */
+  .hero-text-overlay { order: unset; }
+  .hero-footer        { order: unset; }
+
+  /* Stack "JUST D" and "O IT." as two clean rows — eliminates the cutoff entirely */
+  .hero-title {
+    flex-direction: column;
+    font-size: clamp(1.9rem, 10.5vw, 2.8rem);
+    line-height: 1;
+    margin-top: 0.2rem;
+    gap: 0;
   }
 }
