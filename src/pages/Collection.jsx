@@ -105,14 +105,7 @@ const COLLECTION_ITEMS = [
     primaryImg: blue1,
     secondaryImg: blue2
   },
-  {
-    id: 4,
-    name: 'Jordan 1 Retro High',
-    category: 'Heritage',
-    price: '$180',
-    primaryImg: j1b,
-    secondaryImg: j2b
-  },
+  
 ];
 
 export default function Collection() {
