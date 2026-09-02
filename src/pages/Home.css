@@ -12,14 +12,13 @@
 
 .hero-slide-layer {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-/* Base Layer Setup */
+/* Base Layer */
 .base-layer {
   background-color: #ffffff;
   z-index: 1;
@@ -41,32 +40,30 @@
   clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 }
 
-/* Centered Image / Canvas Asset */
+/* Centered Canvas Image Node - Scaled for Desktop & Mobile */
 .hero-image-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 500px;
-  height: 60%;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1200px; /* Big impact on large monitors */
+  max-height: 700px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
-/* Content Placement */
+/* Content Container */
 .hero-content {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 3.5rem 5vw;
+  padding: 3rem 5vw;
   box-sizing: border-box;
   pointer-events: none;
   z-index: 3;
@@ -78,7 +75,7 @@
   width: 100%;
 }
 
-/* Base White Theme Typography Rules */
+/* Theme Color Inversion */
 .theme-black .hero-subtitle,
 .theme-black .part-1,
 .theme-black .cta-link {
@@ -93,7 +90,6 @@
   border-bottom: 1px solid #000000;
 }
 
-/* Base Black Theme Typography Rules */
 .theme-white .hero-subtitle,
 .theme-white .part-1,
 .theme-white .cta-link {
@@ -108,9 +104,9 @@
   border-bottom: 1px solid #ffffff;
 }
 
-/* Typography Formatting */
+/* Typography & Responsive Fluidity */
 .hero-subtitle {
-  font-size: 0.8rem;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
   letter-spacing: 0.25em;
   font-weight: 700;
   display: block;
@@ -118,19 +114,23 @@
 
 .hero-title {
   display: flex;
-  flex-wrap: wrap; /* Allows "JUST" and "DO IT." to wrap vertically on narrow screens if needed */
-  gap: 0.3em;
-  font-size: clamp(1.4rem, 6.5vw, 7.5rem); /* Scaled down minimum from 1.8rem to 1.4rem */
+  flex-wrap: wrap; /* Allows "JUST" and "DO IT." to stack cleanly on narrow mobile displays */
+  gap: 0.2em;
+  font-size: clamp(2rem, 7.5vw, 7.5rem); /* Dynamically shrinks to fit mobile, scales up to 120px on desktop */
   font-weight: 900;
-  line-height: 0.95;
+  line-height: 0.9;
   letter-spacing: -0.04em;
   margin-top: 0.5rem;
   max-width: 100%;
-  word-break: break-word;
+}
+
+.part-1, .part-2 {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .cta-link {
-  font-size: 0.85rem;
+  font-size: clamp(0.7rem, 1.1vw, 0.85rem);
   font-weight: 700;
   letter-spacing: 0.15em;
   padding-bottom: 0.2rem;
@@ -138,29 +138,14 @@
   display: inline-block;
 }
 
-/* Mobile Breakpoint Guard */
-@media (max-width: 768px) {
+/* Mobile Safety Adjustment */
+@media (max-width: 600px) {
   .hero-content {
     padding: 2rem 1.25rem;
   }
 
-  .hero-subtitle {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-  }
-
-  .hero-title {
-    font-size: clamp(1.2rem, 7vw, 2.5rem);
-    line-height: 1;
-  }
-
   .hero-image-center {
-    width: 85%;
-    height: 45%;
-  }
-
-  .cta-link {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    width: 85vw;
+    height: 50vh;
   }
 }
